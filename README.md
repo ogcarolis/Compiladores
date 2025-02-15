@@ -1,4 +1,4 @@
-# Repositório de Projetos de Compiladores
+# Projetos de Compiladores
 
 Este repositório contém três projetos desenvolvidos como parte de uma aula de compiladores. Cada um dos projetos aborda uma etapa importante do desenvolvimento de um compilador, desde a execução de código até a tradução de código-fonte para código de máquina. A seguir, você encontrará uma descrição detalhada de cada um dos projetos incluídos.
 
