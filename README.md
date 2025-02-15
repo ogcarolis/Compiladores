@@ -45,4 +45,6 @@ Este código em C implementa um simulador básico de um processador fictício, o
 
 ---
 
-## Desenvolvedora: Carolina Gimenez
+## Desenvolvedora: 
+
+Carolina Gimenez
