@@ -4,7 +4,7 @@
 .DATA
 A DB 50
 B DB 10
-X DB ?
+X DB 0
 
 .CODE
 .ORG 0
