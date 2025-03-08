@@ -1,14 +1,17 @@
 #include <stdint.h>
 #include <stdio.h>
 
+// Definição do offset por causa do header
 #define OFFSET 2
 
+// Definição de comentário, espaço, tab, máximo tamanho do mnemonico e máximo tamanho da variável
 #define COMENTARIO ';'
 #define SPACE ' '
 #define TAB '\t'
 #define MAX_MNEMONICO_SIZE 3
 #define TOKEN_SIZE 10
 
+// Enum para cada mnemonico (instrução)
 typedef enum {
     NOP = 0x0,
     STA = 0x10,
@@ -24,12 +27,14 @@ typedef enum {
     DESCONHECIDO = 0xFF // CASO NÃO EXISTA
 } Mnemonico;
 
+// Struct de instruções
 typedef struct instrucao {
     Mnemonico mnemonico;
     char token[TOKEN_SIZE + 1];
     struct instrucao* prox;
 } Instrucao;
 
+// Struct de Data
 typedef struct data {
     char token[TOKEN_SIZE + 1];
     char tipo[TOKEN_SIZE + 1];
@@ -39,6 +44,7 @@ typedef struct data {
     uint8_t posMemoria;
 } Data;
 
+// Struct do lexer que guarda todo o conteúdo que o lexer converteu
 typedef struct lexer {
     FILE* file;
     int linha;
@@ -47,12 +53,14 @@ typedef struct lexer {
     uint8_t origem;
 } Lexer;
 
+// Struct de palavras
 typedef struct palavra {
     char texto[TOKEN_SIZE + 1];
     char ultimo;
     size_t tamanho;
 } Palavra;
 
+// Struct de variáveis
 typedef struct variavel {
     char token[TOKEN_SIZE + 1];
     uint16_t pos;
@@ -77,6 +85,7 @@ void freeLexer(Lexer* lexer);
 void imprimeLexer(Lexer* lexer);
 int executaLexer(Lexer *lexer);
 
+// Funções de verificação de letra, número, alfa numérico e hexadecimal
 int ehLetra(char c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
 int ehNumero(char c) { return c >= '0' && c <= '9'; }
 int ehAlfaNumerico(char c) { return ehLetra(c) || ehNumero(c); }
