@@ -1,0 +1,22 @@
+<gpa> ::= <nome> <inicio> <corpo>* <fim>
+
+<nome> ::= "PROGRAMA " "\"" <label>+ "\"" ":"
+<inicio> ::= "\n" "INICIO" "\n"
+<label> ::= [a-z] | [A-Z] 
+
+<variavel> ::= <label>+ " "? "=" " "? <valor> "\n"
+<valor> ::= <numberVar> | <expressao> | <parentesesExp>
+
+<numberExp> ::= <pos> | <neg>
+<numberVar> ::= <pos> | <negVar>
+<pos> ::= [1-9] [0-9]* | "0"
+<neg> ::= "(-" " "? [1-9] [0-9]* ")"
+<negVar> ::= <neg> | ("-" " "? [1-9] [0-9]*)
+
+<expressao> ::= (<numberExp> | <label>+) (<operacao> (<numberExp> | <label>+))+
+<parentesesExp> ::=  (<parenteses> (<operacao> (<numberExp> | <label>+))*) | (<expressao> (<operacao> <parenteses>)+)
+<parenteses> ::= "(" <expressao> ")"
+<operacao> ::= " "? ("+" | "-" | "*" | "/") " "?
+
+<fim> ::= "FIM"
+<corpo> ::= <variavel>
