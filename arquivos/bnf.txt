@@ -4,7 +4,7 @@
 <inicio> ::= "\n" "INICIO" "\n" 
 <label> ::= ([a-z] [A-Z]*)+ | ([A-Z] [a-z]*)+
 
-<variavel> ::= <label> <space> "=" <space> <valor> "\n"
+<variavel> ::= "\n"* <label> <space> "=" <space> <valor> "\n"*
 <space> ::= " "?
 <valor> ::= <numberVar> | <expressao>
 
@@ -20,5 +20,5 @@
 <termo> ::= <parenteses> | <numberExp> | <label>
 <parenteses> ::= "(" <expressao> ")"
 
-<corpo> ::= <variavel>
+<corpo> ::= <variavel> | ( "\n"* <expressao> "\n"*)
 <fim> ::= "FIM"
