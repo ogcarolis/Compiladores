@@ -1,0 +1,12 @@
+.DATA
+RES DB ?
+c DB ?
+b DB 0A
+a DB 05
+.CODE
+.ORG 0
+LDA a 
+ADD b
+STA c
+STA RES
+HLT

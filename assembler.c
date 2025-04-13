@@ -631,7 +631,11 @@ int salvarData(Lexer* lexer) {
             if (!auxData->vazio && tamanhoCode + posicao + 1 < 258) {
                 MEMORIA[posicao] = (uint8_t)auxData->valor;
                 auxData->posMemoria = posicao;
-                printf("Posicao Var %s: %x\n", auxData->token, auxData->posMemoria);
+                posicao++;
+            }
+            else if (auxData->vazio && tamanhoCode + posicao + 1 < 258) {
+                MEMORIA[posicao] = 0;
+                auxData->posMemoria = posicao;
                 posicao++;
             }
             else if (tamanhoCode + posicao + 1 >= 258) {
@@ -672,7 +676,6 @@ int salvarCode(Lexer* lexer) {
             while (auxData != NULL) {
               if (strcmp(auxData->token, auxInstrucao->token) == 0) {
                 MEMORIA[posicao + OFFSET] = (uint16_t)auxData->posMemoria - OFFSET;
-                printf("INST %x VAR %s POS %x\n", auxInstrucao->mnemonico, auxData->token, auxData->posMemoria);
                 posicao++;
                 encontrou = 1;
                 break;
